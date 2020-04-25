@@ -1,0 +1,38 @@
+{
+  "hosting": {
+    "public": "public",
+    "rewrites": [
+      {
+      "source": "**",
+      "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source" : "**/*.@(jpg|jpeg|gif|png|ico)",
+        "headers" : [ {
+          "key" : "Cache-Control",
+          "value" : "max-age=7200"
+        }]
+      },
+      {
+        "source" : "sw.js",
+        "headers" : [
+          {
+            "key" : "Cache-Control",
+            "value" : "max-age=0, no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "</bundle.js>;rel=preload;as=script,</sw.js>;rel=preload;as=worker;nopush,<https://hnpwa.com/api/v0/news.json?page=1>;rel=preload;as=fetch;crossorigin,<https://hacker-news.firebaseio.com/v0/topstories.json>;rel=preload;as=fetch;crossorigin"
+          }
+        ]
+      }
+    ]
+  }
+}
