@@ -1,0 +1,38 @@
+{
+  "hosting": {
+    "public": "public",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source" : "**/*.@(jpg|jpeg|gif|png|ico)",
+        "headers" : [ {
+          "key" : "Cache-Control",
+          "value" : "max-age=7200"
+        }]
+      },
+      {
+        "source" : "sw.js",
+        "headers" : [
+          {
+            "key" : "Cache-Control",
+            "value" : "max-age=0, no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "<https://api.hnpwa.com>;rel=preconnect,</hnpwa-vanilla.js>;rel=preload;as=script,</favicon.ico>;rel=preload;as=image"
+          }
+        ]
+      }
+    ]
+  }
+}

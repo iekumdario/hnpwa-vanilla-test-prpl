@@ -1,0 +1,8 @@
+.idea
+node_modules
+.DS_Store
+public
+certs
+.firebaserc
+.firebase
+firebase-debug.log
