@@ -2,7 +2,7 @@ const baseDomain = 'https://api.hnpwa.com/v0';
 const extension = '.json';
 
 export const urls = {
-    'newstories': (page) => `${baseDomain}/newest${extension}?page=${page}`,
+    'newstories': (page) => `${baseDomain}/newest/${page}${extension}`,
     'topstories': (page) => `${baseDomain}/news${extension}?page=${page}`,
     'askstories': (page) => `${baseDomain}/ask${extension}?page=${page}`,
     'jobstories': (page) => `${baseDomain}/jobs${extension}?page=${page}`,
