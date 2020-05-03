@@ -6,27 +6,23 @@
   "scripts": {
     "html-minify": "node html-minify.js",
     "copy-assets": "node copy-assets.js",
-    "bundle-dev": "microbundle --output public --target browser --format cjs",
-    "bundle-dev:watch": "microbundle watch --output public --target browser --format cjs",
+    "bundle:dev": "microbundle watch --output public --target browser --format cjs",
     "bundle": "microbundle --output public --target browser --format cjs --no-sourcemap",
-    "bundle:watch": "microbundle watch --output public --target browser --format cjs --sourcemap false",
     "bundle:sw": "node sw-build.js",
     "build": "rm -rf public; npm run bundle; npm run copy-assets; npm run bundle:sw; npm run html-minify",
-    "deploy": "npm run build; firebase deploy --project hnpwa-vanilla",
-    "serve": "serve ./public --listen 8080 --single",
-    "dev": "(npm run copy-assets & npm run bundle:sw & npm run bundle:watch & npm run serve)",
-    "build-dev": "rm -rf public; npm run copy-assets; npm run bundle-dev; npm run bundle:sw",
-    "dev-no-watch": "npm run build-dev; npm run serve"
+    "build:dev": "rm -rf public; npm run copy-assets; (npm run bundle:dev &); npm run bundle:sw; npm run serve;",
+    "deploy": "npm run build; surge --domain https://hnpwa-test-prpl.surge.sh",
+    "undeploy": "surge teardown hnpwa-test-prpl.surge.sh",
+    "serve": "serve ./public --listen 8080 --single"
   },
   "keywords": [],
   "author": "Cristian Bote",
   "license": "ISC",
   "devDependencies": {
-    "firebase": "^5.5.6",
-    "firebase-tools": "^6.0.0",
     "html-minifier": "^3.5.7",
     "microbundle": "^0.11.0",
-    "serve": "^11.3.0"
+    "serve": "^11.3.0",
+    "surge": "^0.21.3"
   },
   "engines": {
     "node": ">=5.0.0"
