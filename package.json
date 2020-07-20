@@ -13,7 +13,8 @@
     "build:dev": "rm -rf public; npm run copy-assets; (npm run bundle:dev &); npm run bundle:sw; npm run serve;",
     "deploy": "npm run build; surge --domain https://hnpwa-test-prpl.surge.sh",
     "undeploy": "surge teardown hnpwa-test-prpl.surge.sh",
-    "serve": "serve ./public --listen 8080 --single"
+    "serve": "serve ./public --listen 8080 --single",
+    "serve:help": "serve --help"
   },
   "keywords": [],
   "author": "Cristian Bote",
@@ -21,7 +22,7 @@
   "devDependencies": {
     "html-minifier": "^3.5.7",
     "microbundle": "^0.11.0",
-    "serve": "^11.3.0",
+    "serve": "^11.3.2",
     "surge": "^0.21.3"
   },
   "engines": {
